@@ -1,5 +1,3 @@
 ENCODER_MAP_ENABLE = yes
 MOUSEKEY_ENABLE = no
 VIA_ENABLE = yes
-
-SRC += source.c

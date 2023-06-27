@@ -5,11 +5,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: ghcr.io/qmk/qmk_cli
-    strategy:
-      fail-fast: false
-      matrix:
-        file:
-          - duboisph.json
 
     steps:
       - name: Disable git safe directory checks
@@ -21,19 +16,19 @@ jobs:
           repository: qmk/qmk_firmware
           submodules: recursive
 
-      - name: Checkout userspace
+      - name: Checkout keymap
         uses: actions/checkout@v3
         with:
-          path: users/${{ github.actor }}
+          path: keyboards/gmmk/pro/rev1/ansi/keymaps/${{ github.actor }}
 
       - name: Build firmware
-        run: qmk compile "users/${{ github.actor }}/${{ matrix.file }}"
+        run: qmk compile -kb "gmmk/pro/ansi/rev1" -km "${{ github.actor }}"
 
       - name: Archive firmware
         uses: actions/upload-artifact@v3
         continue-on-error: true
         with:
-          name: ${{ matrix.file }}_${{ github.actor }}
+          name: gmmk_pro_rev1_ansi_${{ github.actor }}
           path: |
             *.hex
             *.bin
