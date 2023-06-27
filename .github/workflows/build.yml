@@ -22,7 +22,9 @@ jobs:
           path: keyboards/gmmk/pro/rev1/ansi/keymaps/${{ github.actor }}
 
       - name: Build firmware
-        run: qmk compile -kb "gmmk/pro/ansi/rev1" -km "${{ github.actor }}"
+        run: |
+          cd keyboards/gmmk/pro/rev1/ansi/keymaps/${{ github.actor }}
+          qmk compile
 
       - name: Archive firmware
         uses: actions/upload-artifact@v3
