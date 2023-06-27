@@ -1,14 +1,6 @@
 # duboisph's GMMK Pro layout
 
-My personal layout. Build:
-
-```bash
-qmk setup
-qmk config user.keyboard=gmmk/pro/ansi/rev1
-qmk config user.keymap=duboisph
-qmk compile
-qmk flash
-```
+My personal GMMK Pro (rev1, ANSI) layout, automatically built through GitHub Actions. Build artifacts can be flashed via [qmk-toolbox](https://github.com/qmk/qmk_toolbox).
 
 **Note**: Use `FN + \` to put the keyboard in bootloader mode.
 

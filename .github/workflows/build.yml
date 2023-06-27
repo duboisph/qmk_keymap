@@ -5,6 +5,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: ghcr.io/qmk/qmk_cli
+    strategy:
+      fail-fast: false
+      matrix:
+        keyboard:
+          - gmmk/pro/rev1/ansi
 
     steps:
       - name: Disable git safe directory checks
@@ -19,18 +24,18 @@ jobs:
       - name: Checkout keymap
         uses: actions/checkout@v3
         with:
-          path: keyboards/gmmk/pro/rev1/ansi/keymaps/${{ github.actor }}
+          path: keyboards/${{ matrix.keyboard }}/keymaps/${{ github.actor }}
 
       - name: Build firmware
         run: |
-          cd keyboards/gmmk/pro/rev1/ansi/keymaps/${{ github.actor }}
+          cd keyboards/${{ matrix.keyboard }}/keymaps/${{ github.actor }}
           qmk compile
 
       - name: Archive firmware
         uses: actions/upload-artifact@v3
         continue-on-error: true
         with:
-          name: gmmk_pro_rev1_ansi_${{ github.actor }}
+          name: qmk_${{ github.actor }}
           path: |
             *.hex
             *.bin
