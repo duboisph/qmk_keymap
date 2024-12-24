@@ -1,3 +1,6 @@
+**Deprecated**: Going for simplicity and just using [VIA to update the keymap](https://www.caniusevia.com) these days.
+
+
 # duboisph's GMMK Pro layout
 
 My personal GMMK Pro (rev1, ANSI) layout, automatically built through GitHub Actions. Build artifacts can be flashed via [qmk-toolbox](https://github.com/qmk/qmk_toolbox).
